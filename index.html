@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saldo Mensal</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section class="info">
+        <article>
+          <p class="text-left uppercase">
+            Total recebido: <span class="total-received font-bold"></span>
+          </p>
+          <p class="text-left uppercase">
+            Total gasto: <span class="total-spent font-bold"></span>
+          </p>
+          <p class="text-left uppercase">
+            Saldo: <span class="balance font-bold"></span>
+          </p>
+        </article>
+      </section>
+      <section class="received">
+        <article>
+          <table>
+            <caption class="uppercase font-bold">
+              Recebido em
+              <span class="month"></span>
+            </caption>
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Valor</th>
+                <th>Motivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Itens serão renderizados aqui via JS -->
+            </tbody>
+          </table>
+        </article>
+      </section>
+      <section class="spent">
+        <article>
+          <table>
+            <caption class="uppercase font-bold">
+              Gasto em
+              <span class="month"></span>
+            </caption>
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Valor</th>
+                <th>Motivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Itens serão renderizados aqui via JS -->
+            </tbody>
+          </table>
+        </article>
+      </section>
+      <section>
+        <article>
+          <button class="add-move-btn">
+            <img src="img/icon/plus.svg" alt="" />
+          </button>
+          <dialog class="add-move-modal">
+            <div class="container">
+              <header>
+                <h1>Adição de Movimentação</h1>
+                <button class="close-modal-btn">
+                  <img src="img/icon/x.svg" alt="" />
+                </button>
+              </header>
+              <form>
+                <div class="input-wrapper">
+                  <label for="day">Dia da movimentação</label>
+                  <input type="date" id="day" required />
+                </div>
+                <div class="input-wrapper">
+                  <label for="value">Valor da movimentação</label>
+                  <input type="number" id="value" placeholder="99" required />
+                </div>
+                <div class="input-wrapper">
+                  <label for="reason">Motivo da movimentação</label>
+                  <input
+                    type="text"
+                    id="reason"
+                    placeholder="Breve descrição da despesa"
+                    required
+                  />
+                </div>
+                <div class="input-wrapper">
+                  <label for="type">Tipo da movimentação</label>
+                  <select id="type" required>
+                    <option value="" selected>Selecione</option>
+                    <option value="received">Recebido</option>
+                    <option value="spent">Gasto</option>
+                  </select>
+                </div>
+                <button type="submit" class="apply-modal-btn">Aplicar</button>
+              </form>
+            </div>
+          </dialog>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

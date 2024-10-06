@@ -1,0 +1,203 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-color: #121212;
+  --txt-color: #ffffff;
+  --green-1: #16a34a;
+  --green-2: #15803d;
+  --green-3: #166534;
+  --red-1: #dc2626;
+  --red-2: #b91c1c;
+  --red-3: #991b1b;
+  --blue-1: #2563eb;
+  --blue-2: #1d4ed8;
+  --blue-3: #1e40af;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--txt-color);
+  font-family: sans-serif;
+  font-size: 1rem;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin-inline: auto;
+  padding-block: 1em;
+  width: clamp(320px, 90%, 500px);
+}
+
+.info {
+  line-height: 1.5;
+}
+
+.total-received {
+  color: var(--green-1);
+}
+
+.total-spent {
+  color: var(--red-1);
+}
+
+.balance {
+  color: var(--blue-1);
+}
+
+section {
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+caption {
+  margin-bottom: 0.3em;
+}
+
+th,
+td {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0.5em;
+}
+
+.received table thead tr {
+  background-color: var(--green-1);
+}
+
+.received table {
+  background-color: var(--green-2);
+}
+
+.received tr.highlighted {
+  background-color: var(--green-3) !important;
+  font-weight: bold;
+}
+
+.spent table thead tr {
+  background-color: var(--red-1);
+}
+
+.spent table {
+  background-color: var(--red-2);
+}
+
+.spent tr.highlighted {
+  background-color: var(--red-3) !important;
+  font-weight: bold;
+}
+
+.add-move-btn {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  padding: 1.3em;
+  border-radius: 100%;
+  border: none;
+  background-color: var(--blue-1);
+  transition: background-color 0.3s;
+}
+
+.add-move-btn:hover {
+  background-color: var(--blue-2);
+  cursor: pointer;
+}
+
+.close-modal-btn {
+  border: none;
+  margin-left: auto;
+  background-color: inherit;
+}
+
+.close-modal-btn:hover {
+  cursor: pointer;
+  animation: spin 1 linear infinite;
+}
+
+.add-move-modal .container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(320px, 90%, 500px);
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 0.7em;
+  row-gap: 2em;
+  padding: 1em;
+  color: white;
+}
+
+.add-move-modal form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+.apply-modal-btn {
+  color: white;
+  background-color: var(--blue-1);
+  transition: background-color 0.3s;
+  border: none;
+  padding: 0.7em;
+  border-radius: 0.6em;
+}
+
+.add-move-modal header {
+  display: flex;
+}
+
+.add-move-modal header h1 {
+  font-weight: bold;
+}
+
+.add-move-modal input,
+select {
+  padding: 0.7em;
+  border-radius: 0.6em;
+  border: none;
+}
+
+.apply-modal-btn:hover {
+  cursor: pointer;
+  background-color: var(--blue-2);
+}
+
+.add-move-modal .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+
+/* utils */
+.font-bold {
+  font-weight: 700;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
