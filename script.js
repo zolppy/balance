@@ -1,3 +1,11 @@
+/*
+ * LIMPAR HTML
+ * LIMPAR CSS
+ * LIMPAR JS
+ * APLICAR B.E.M
+ * DIVIDIR A LÓGICA DA APLICAÇÃO (JS) EM OUTROS ARQUIVOS
+ */
+
 // Funções auxiliares
 
 const clearField = (field) => (field.value = "");
@@ -111,7 +119,35 @@ const renderTableRow = (table, row) => {
   editIcon.setAttribute("src", "img/icon/pencil.svg");
 
   const removeBtn = createElement("button", ["remove-move-btn"], [removeIcon]);
+
+  removeBtn.addEventListener("click", function () {
+    const target = this.parentElement.parentElement.parentElement;
+    const id = target.id;
+
+    applyRemoveModalBtn.addEventListener("click", () => {
+      closeRemoveMoveModal();
+      const el = spentValues.findIndex((spentValue) => spentValue.id === id);
+      const el2 = receivedValues.find(
+        (receivedValue) => receivedValue.id === id
+      );
+
+      if (el) {
+        spentValues.splice(el, 1);
+        saveInLocalStorage("spentValues", spentValues);
+      }
+      if (el2) {
+        receivedValues.splice(el2, 1);
+        saveInLocalStorage("receivedValues", receivedValues);
+      }
+
+      target.remove();
+    });
+
+    openRemoveMoveModal();
+  });
+
   const editBtn = createElement("button", ["edit-move-btn"], [editIcon]);
+
   const buttonWrapper = createElement(
     "div",
     ["button-wrapper"],
@@ -262,4 +298,8 @@ applyModalBtn.addEventListener("click", () => {
 
 formModal.addEventListener("submit", (event) => {
   event.preventDefault();
+});
+
+closeRemoveModalBtn.addEventListener("click", () => {
+  closeRemoveMoveModal();
 });
