@@ -171,12 +171,13 @@ applyModalBtn.addEventListener("click", () => {
   const modalTypeField = document.querySelector(".add-move-modal #type");
   const receivedTable = document.querySelector(".received table");
   const spentTable = document.querySelector(".spent table");
+  const type = modalTypeField.value;
 
   const newRow = {
     id: UUID(),
     day: modalDayField.value.slice(8),
     value: Number(modalValueField.value),
-    reason: modalTypeField.value,
+    reason: modalReasonField.value,
   };
 
   if (type === "received") {
@@ -190,7 +191,23 @@ applyModalBtn.addEventListener("click", () => {
   }
 
   closeAddMoveModal();
-  hideElement(addMoveButton);
+  showElement(addMoveButton);
+
+  const totalReceived = getTotalValue(receivedValues);
+  const totalSpent = getTotalValue(spentValues);
+  const balance = totalReceived - totalSpent;
+  const totalReceivedEl = document.querySelector(".total-received");
+  const totalSpentEl = document.querySelector(".total-spent");
+  const balanceEl = document.querySelector(".balance");
+
+  renderText(totalReceivedEl, convertToBRL(totalReceived));
+  renderText(totalSpentEl, convertToBRL(totalSpent));
+  renderText(balanceEl, convertToBRL(balance));
+
+  receivedValues.length > 1 &&
+    markRow(receivedTable, getHighestValueItemID(receivedValues));
+  spentValues.length > 1 &&
+    markRow(spentTable, getHighestValueItemID(spentValues));
 
   clearField(modalDayField);
   clearField(modalValueField);
