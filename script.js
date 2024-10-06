@@ -57,11 +57,32 @@ const closeAddMoveModal = () => {
   addMoveModal.close();
 };
 
+const openRemoveMoveModal = () => {
+  const removeMoveModal = document.querySelector(".remove-move-modal");
+
+  removeMoveModal.showModal();
+};
+
+const closeRemoveMoveModal = () => {
+  const removeMoveModal = document.querySelector(".remove-move-modal");
+
+  removeMoveModal.close();
+};
+
 const showElement = (element) => (element.style.display = "initial");
 
 const hideElement = (element) => (element.style.display = "none");
 
 // Funções
+
+const createElement = (type, classNames, children) => {
+  const element = document.createElement(type);
+
+  classNames.forEach((className) => element.classList.add(className));
+  children.forEach((child) => element.appendChild(child));
+
+  return element;
+};
 
 const renderTableRow = (table, row) => {
   const { id, day, value, reason } = row;
@@ -74,6 +95,7 @@ const renderTableRow = (table, row) => {
     document.createElement("td"),
     document.createElement("td"),
     document.createElement("td"),
+    document.createElement("td"),
   ];
 
   tr.id = id;
@@ -81,6 +103,22 @@ const renderTableRow = (table, row) => {
   [treatedDay, treatedValue, reason].forEach((value, index) => {
     tds[index].textContent = value;
   });
+
+  const removeIcon = document.createElement("img");
+  const editIcon = document.createElement("img");
+
+  removeIcon.setAttribute("src", "img/icon/trash.svg");
+  editIcon.setAttribute("src", "img/icon/pencil.svg");
+
+  const removeBtn = createElement("button", ["remove-move-btn"], [removeIcon]);
+  const editBtn = createElement("button", ["edit-move-btn"], [editIcon]);
+  const buttonWrapper = createElement(
+    "div",
+    ["button-wrapper"],
+    [removeBtn, editBtn]
+  );
+
+  tds[3].appendChild(buttonWrapper);
 
   tds.forEach((td) => tr.appendChild(td));
   container.appendChild(tr);
@@ -102,8 +140,15 @@ const spentValues = loadFromLocalStorage("spentValues");
 // Mapeamento de elementos
 
 const addMoveButton = document.querySelector(".add-move-btn");
+const removeMoveButton = document.querySelector(".remove-move-btn");
 const closeModalBtn = document.querySelector(".close-modal-btn");
+const closeRemoveModalBtn = document.querySelector(
+  ".remove-move-modal .close-modal-btn"
+);
 const applyModalBtn = document.querySelector(".apply-modal-btn");
+const applyRemoveModalBtn = document.querySelector(
+  ".remove-move-modal .apply-modal-btn"
+);
 const formModal = document.querySelector(".add-move-modal form");
 
 // Eventos

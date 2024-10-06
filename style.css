@@ -143,7 +143,29 @@ td {
   color: white;
 }
 
+.remove-move-modal .container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(320px, 90%, 500px);
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 0.7em;
+  row-gap: 2em;
+  padding: 1em;
+  color: white;
+}
+
 .add-move-modal form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+.remove-move-modal .wrapper {
   display: flex;
   flex-direction: column;
   row-gap: 1em;
@@ -158,7 +180,20 @@ td {
   border-radius: 0.6em;
 }
 
+.remove-move-modal .apply-modal-btn {
+  color: white;
+  background-color: var(--red-1);
+  transition: background-color 0.3s;
+  border: none;
+  padding: 0.7em;
+  border-radius: 0.6em;
+}
+
 .add-move-modal header {
+  display: flex;
+}
+
+.remove-move-modal header {
   display: flex;
 }
 
@@ -178,10 +213,32 @@ select {
   background-color: var(--blue-2);
 }
 
+.remove-move-modal .apply-modal-btn:hover {
+  cursor: pointer;
+  background-color: var(--red-2);
+}
+
 .add-move-modal .input-wrapper {
   display: flex;
   flex-direction: column;
   row-gap: 0.5em;
+}
+
+.button-wrapper {
+  display: flex;
+  column-gap: 0.4em;
+}
+
+.remove-move-btn {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-move-btn {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
 }
 
 /* utils */
