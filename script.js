@@ -141,6 +141,22 @@ const renderTableRow = (table, row) => {
       }
 
       target.remove();
+
+      const totalReceived = getTotalValue(receivedValues);
+      const totalSpent = getTotalValue(spentValues);
+      const balance = totalReceived - totalSpent;
+      const totalReceivedEl = document.querySelector(".total-received");
+      const totalSpentEl = document.querySelector(".total-spent");
+      const balanceEl = document.querySelector(".balance");
+      const receivedTable = document.querySelector(".received table");
+      const spentTable = document.querySelector(".spent table");
+
+      renderText(totalReceivedEl, convertToBRL(totalReceived));
+      renderText(totalSpentEl, convertToBRL(totalSpent));
+      renderText(balanceEl, convertToBRL(balance));
+
+      markRow(receivedTable, getHighestValueItemID(receivedValues));
+      markRow(spentTable, getHighestValueItemID(spentValues));
     });
 
     openRemoveMoveModal();
@@ -162,6 +178,8 @@ const renderTableRow = (table, row) => {
 
 const markRow = (table, id) => {
   const rows = table.querySelectorAll("tbody tr");
+
+  Array.from(rows).forEach((row) => row.classList.remove("highlighted"));
 
   Array.from(rows)
     .find((row) => row.id === id)
@@ -285,10 +303,8 @@ applyModalBtn.addEventListener("click", () => {
   renderText(totalSpentEl, convertToBRL(totalSpent));
   renderText(balanceEl, convertToBRL(balance));
 
-  receivedValues.length > 1 &&
-    markRow(receivedTable, getHighestValueItemID(receivedValues));
-  spentValues.length > 1 &&
-    markRow(spentTable, getHighestValueItemID(spentValues));
+  markRow(receivedTable, getHighestValueItemID(receivedValues));
+  markRow(spentTable, getHighestValueItemID(spentValues));
 
   clearField(modalDayField);
   clearField(modalValueField);
