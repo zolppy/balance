@@ -11,9 +11,9 @@ const RemoveButton: React.FC = (): React.JSX.Element => {
       onMouseLeave={() => setIsHover(false)}
     >
       {isHover ? (
-        <BiSolidTrashAlt className="text-2xl" />
+        <BiSolidTrashAlt className="text-3xl" />
       ) : (
-        <BiTrashAlt className="text-2xl" />
+        <BiTrashAlt className="text-3xl" />
       )}
     </button>
   );

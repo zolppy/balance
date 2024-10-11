@@ -26,7 +26,9 @@ const ReceivedTable: React.FC = ({}): React.JSX.Element => {
           <tr key={receivedValue.id}>
             <Td>{receivedValue.date.toString()}</Td>
             <Td>{moneyFormatter(Number(receivedValue.value))}</Td>
-            <Td>{receivedValue.reason}</Td>
+            <td className="border border-white border-opacity-20 p-2">
+              {receivedValue.reason}
+            </td>
             <Td>
               <TableButtonWrapper>
                 <EditButton />

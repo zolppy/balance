@@ -29,7 +29,9 @@ const SpentTable: React.FC = (): React.JSX.Element => {
           >
             <Td>{spentValue.date.toString()}</Td>
             <Td>{moneyFormatter(Number(spentValue.value))}</Td>
-            <Td>{spentValue.reason}</Td>
+            <td className="border border-white border-opacity-20 p-2">
+              {spentValue.reason}
+            </td>
             <Td>
               <TableButtonWrapper>
                 <EditButton />

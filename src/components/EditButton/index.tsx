@@ -11,9 +11,9 @@ const EditButton: React.FC = (): React.JSX.Element => {
       onMouseLeave={() => setIsHover(false)}
     >
       {isHover ? (
-        <BiSolidPencil className="text-2xl" />
+        <BiSolidPencil className="text-3xl" />
       ) : (
-        <BiPencil className="text-2xl" />
+        <BiPencil className="text-3xl" />
       )}
     </button>
   );
