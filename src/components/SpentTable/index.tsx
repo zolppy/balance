@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useMovimentationCtx } from "../../context/MovimentationCtx";
 import { IMovimentation } from "../../utils/interfaces/movimentation";
 import { moneyFormatter } from "../../utils/functions/formatter";
@@ -9,10 +10,14 @@ import TableButtonWrapper from "../TableButtonWrapper";
 
 const SpentTable: React.FC = (): React.JSX.Element => {
   const { spentValues }: any = useMovimentationCtx();
+  const trRefs = useRef<(HTMLTableRowElement | null)[]>([]);
+
+  const remove = (index: number) => {
+    trRefs.current[index]?.remove();
+  };
 
   return (
     <table className="w-full">
-      <caption className="uppercase font-bold mb-2">Gastos</caption>
       <thead className="bg-red-700 text-white">
         <tr>
           <Th>Data</Th>
@@ -22,10 +27,11 @@ const SpentTable: React.FC = (): React.JSX.Element => {
         </tr>
       </thead>
       <tbody className="bg-red-600 text-white">
-        {spentValues.map((spentValue: IMovimentation) => (
+        {spentValues.map((spentValue: IMovimentation, index: number) => (
           <tr
             key={spentValue.id}
             className="hover:bg-red-500 transition-colors"
+            ref={(el) => (trRefs.current[index] = el)}
           >
             <Td>{spentValue.date.toString()}</Td>
             <Td>{moneyFormatter(Number(spentValue.value))}</Td>
@@ -35,7 +41,7 @@ const SpentTable: React.FC = (): React.JSX.Element => {
             <Td>
               <TableButtonWrapper>
                 <EditButton />
-                <RemoveButton />
+                <RemoveButton index={index} handleClick={remove} />
               </TableButtonWrapper>
             </Td>
           </tr>
