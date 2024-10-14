@@ -3,7 +3,7 @@ import { useMovimentationCtx } from "../../../context/MovimentationCtx";
 import { useCurrentMovimentationCtx } from "../../../context/CurrentMovimentationCtx";
 import { useOpenCloseAddDialogCtx } from "../../../context/OpenCloseAddDialogCtx";
 
-const ApplyButton: FC = ({}): JSX.Element => {
+const AddButton: FC = ({}): JSX.Element => {
   const { addMovimentation }: any = useMovimentationCtx();
   const { currentMovimentation }: any = useCurrentMovimentationCtx();
   const { closeAddDialog }: any = useOpenCloseAddDialogCtx();
@@ -19,9 +19,9 @@ const ApplyButton: FC = ({}): JSX.Element => {
       onClick={handleClick}
       className="bg-blue-500 p-2 rounded-lg hover:bg-blue-600"
     >
-      Aplicar
+      Adicionar
     </button>
   );
 };
 
-export default ApplyButton;
+export default AddButton;

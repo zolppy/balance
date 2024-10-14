@@ -1,5 +1,5 @@
-import { FC, FormEvent, JSX } from "react";
-import ApplyButton from "./ApplyButton";
+import { FC, FormEvent, JSX, useEffect } from "react";
+import AddButton from "./AddButton";
 import Header from "../Dialog/Header";
 import H1 from "../Dialog/H1";
 import CloseButton from "../Dialog/CloseButton";
@@ -11,10 +11,13 @@ import { useOpenCloseAddDialogCtx } from "../../context/OpenCloseAddDialogCtx";
 import { useCurrentMovimentationCtx } from "../../context/CurrentMovimentationCtx";
 import MovimentationType from "../../utils/enums/movimentationType";
 import { AnimatePresence, motion } from "framer-motion";
+import { useMovimentationCtx } from "../../context/MovimentationCtx";
 
 const AddDialog: FC = (): JSX.Element => {
   const { addDialogIsOpen, closeAddDialog }: any = useOpenCloseAddDialogCtx();
-  const { setCurrentMovimentation }: any = useCurrentMovimentationCtx();
+  const { currentMovimentation, setCurrentMovimentation }: any =
+    useCurrentMovimentationCtx();
+  const { receivedValues, spentValues }: any = useMovimentationCtx();
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -26,6 +29,16 @@ const AddDialog: FC = (): JSX.Element => {
       [field]: value,
     }));
   };
+
+  useEffect(() => {
+    setCurrentMovimentation({
+      id: "",
+      date: "",
+      value: 0,
+      reason: "",
+      type: MovimentationType.Outcome,
+    });
+  }, [receivedValues, spentValues]);
 
   return (
     <AnimatePresence>
@@ -48,6 +61,7 @@ const AddDialog: FC = (): JSX.Element => {
                 <Input
                   type="date"
                   id="date"
+                  value={currentMovimentation.date}
                   field="date"
                   handleChange={handleChange}
                 />
@@ -59,6 +73,7 @@ const AddDialog: FC = (): JSX.Element => {
                   id="value"
                   placeholder="2,00"
                   step={0.1}
+                  value={currentMovimentation.value}
                   min={0}
                   field="value"
                   handleChange={handleChange}
@@ -70,6 +85,7 @@ const AddDialog: FC = (): JSX.Element => {
                   type="text"
                   id="reason"
                   placeholder="Breve descrição da movimentação"
+                  value={currentMovimentation.reason}
                   field="reason"
                   handleChange={handleChange}
                 />
@@ -83,7 +99,7 @@ const AddDialog: FC = (): JSX.Element => {
                   <option value={MovimentationType.Outcome}>Valor gasto</option>
                 </Select>
               </InputWrapper>
-              <ApplyButton />
+              <AddButton />
             </Form>
           </main>
         </motion.div>

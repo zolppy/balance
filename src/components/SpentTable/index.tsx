@@ -4,7 +4,7 @@ import { IMovimentation } from "../../utils/interfaces/movimentation";
 import { moneyFormatter } from "../../utils/functions/formatter";
 import Td from "../Td";
 import Th from "../Th";
-import EditButton from "../EditButton";
+// import EditButton from "../EditButton";
 import RemoveButton from "../RemoveButton";
 import TableButtonWrapper from "../TableButtonWrapper";
 import { useOpenCloseRemoveDialogCtx } from "../../context/OpenCloseRemoveDialogCtx";
@@ -46,7 +46,7 @@ const SpentTable: React.FC = (): React.JSX.Element => {
             </td>
             <Td>
               <TableButtonWrapper>
-                <EditButton />
+                {/* <EditButton /> */}
                 <RemoveButton index={index} handleClick={remove} />
               </TableButtonWrapper>
             </Td>
