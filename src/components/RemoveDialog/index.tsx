@@ -3,7 +3,7 @@ import RemoveButton from "./RemoveButton";
 import Header from "../Dialog/Header";
 import H1 from "../Dialog/H1";
 import CloseButton from "../Dialog/CloseButton";
-import { useOpenCloseRemoveDialog } from "../../context/OpenCloseRemoveDialogCtx";
+import { useOpenCloseRemoveDialog } from "../../context/OpenCloseRemoveDialog/Hook";
 import { AnimatePresence, motion } from "framer-motion";
 
 const RemoveDialog: FC = (): JSX.Element => {

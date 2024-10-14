@@ -1,22 +1,12 @@
-import { createContext, ReactNode, useContext, useState } from "react";
-import { IMovimentation } from "../utils/interfaces/movimentation";
-import MovimentationType from "../utils/enums/movimentationType";
-import { dateFormatter } from "../utils/functions/formatter";
+import { ReactNode, useState } from "react";
+import MovimentationType from "../../utils/enums/movimentationType";
+import { dateFormatter } from "../../utils/functions/formatter";
 import {
   loadFromStorage,
   saveToStorage,
-} from "../utils/functions/localStorage";
-
-export interface IMovimentationCtx {
-  receivedValues: IMovimentation[];
-  spentValues: IMovimentation[];
-  addMovimentation: (movimentation: IMovimentation) => void;
-  removeMovimentation: (id: string) => void;
-}
-
-const MovimentationCtx = createContext<IMovimentationCtx | undefined>(
-  undefined
-);
+} from "../../utils/functions/localStorage";
+import { IMovimentation } from "../../utils/interfaces/movimentation";
+import { MovimentationCtx } from "./Ctx";
 
 const MovimentationProvider: React.FC<{ children: ReactNode }> = ({
   children,
@@ -95,14 +85,4 @@ const MovimentationProvider: React.FC<{ children: ReactNode }> = ({
   );
 };
 
-export { MovimentationCtx, MovimentationProvider };
-
-export const useMovimentation = (): IMovimentationCtx => {
-  const context = useContext(MovimentationCtx);
-  if (!context) {
-    throw new Error(
-      "useMovimentation must be used within a MovimentationProvider"
-    );
-  }
-  return context;
-};
+export default MovimentationProvider;

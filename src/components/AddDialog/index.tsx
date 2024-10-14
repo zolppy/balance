@@ -9,10 +9,10 @@ import Input from "../Dialog/Input";
 import InputWrapper from "../Dialog/InputWrapper";
 import Select from "../Dialog/Select";
 
-import { useCurrentMovimentation } from "../../context/CurrentMovimentationCtx";
+import { useCurrentMovimentation } from "../../context/CurrentMovimentation/Hook";
 import { AnimatePresence, motion } from "framer-motion";
 import MovimentationType from "../../utils/enums/movimentationType";
-import { useOpenCloseAddDialog } from "../../context/OpenCloseAddDialogCtx";
+import { useOpenCloseAddDialog } from "../../context/OpenCloseAddDialog/Hook";
 import { IMovimentation } from "../../utils/interfaces/movimentation";
 
 const AddDialog: FC = (): JSX.Element => {

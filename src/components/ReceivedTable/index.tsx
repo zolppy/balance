@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useMovimentation } from "../../context/MovimentationCtx";
+import { useMovimentation } from "../../context/Movimentation/Hook";
 import { IMovimentation } from "../../utils/interfaces/movimentation";
 import { moneyFormatter } from "../../utils/functions/formatter";
 import Td from "../Td";
@@ -7,8 +7,8 @@ import Th from "../Th";
 // import EditButton from "../EditButton";
 import RemoveButton from "../RemoveButton";
 import TableButtonWrapper from "../TableButtonWrapper";
-import { useOpenCloseRemoveDialog } from "../../context/OpenCloseRemoveDialogCtx";
-import { useCurrentRemoveTarget } from "../../context/CurrentRemoveTargetCtx";
+import { useOpenCloseRemoveDialog } from "../../context/OpenCloseRemoveDialog/Hook";
+import { useCurrentRemoveTarget } from "../../context/CurrentRemoveTarget/Hook";
 
 const ReceivedTable: React.FC = (): React.JSX.Element => {
   const trRefs = useRef<(HTMLTableRowElement | null)[]>([]);

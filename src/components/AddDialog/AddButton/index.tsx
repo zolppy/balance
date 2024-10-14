@@ -1,7 +1,7 @@
 import { FC, JSX } from "react";
-import { useMovimentation } from "../../../context/MovimentationCtx";
-import { useCurrentMovimentation } from "../../../context/CurrentMovimentationCtx";
-import { useOpenCloseAddDialog } from "../../../context/OpenCloseAddDialogCtx";
+import { useMovimentation } from "../../../context/Movimentation/Hook";
+import { useCurrentMovimentation } from "../../../context/CurrentMovimentation/Hook";
+import { useOpenCloseAddDialog } from "../../../context/OpenCloseAddDialog/Hook";
 
 const AddButton: FC = (): JSX.Element => {
   const { addMovimentation } = useMovimentation();

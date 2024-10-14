@@ -1,7 +1,5 @@
-import { FC, JSX, ReactNode } from "react";
+import { ReactNode } from "react";
 
-const H1: FC<{ children: ReactNode }> = ({ children }): JSX.Element => {
+export default function H1({ children }: { children: ReactNode }) {
   return <h1 className="font-bold text-xl">{children}</h1>;
-};
-
-export default H1;
+}
