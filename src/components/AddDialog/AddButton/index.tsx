@@ -1,16 +1,18 @@
 import { FC, JSX } from "react";
-import { useMovimentationCtx } from "../../../context/MovimentationCtx";
-import { useCurrentMovimentationCtx } from "../../../context/CurrentMovimentationCtx";
-import { useOpenCloseAddDialogCtx } from "../../../context/OpenCloseAddDialogCtx";
+import { useMovimentation } from "../../../context/MovimentationCtx";
+import { useCurrentMovimentation } from "../../../context/CurrentMovimentationCtx";
+import { useOpenCloseAddDialog } from "../../../context/OpenCloseAddDialogCtx";
 
-const AddButton: FC = ({}): JSX.Element => {
-  const { addMovimentation }: any = useMovimentationCtx();
-  const { currentMovimentation }: any = useCurrentMovimentationCtx();
-  const { closeAddDialog }: any = useOpenCloseAddDialogCtx();
+const AddButton: FC = (): JSX.Element => {
+  const { addMovimentation } = useMovimentation();
+  const { currentMovimentation, resetCurrentMovimentationFields } =
+    useCurrentMovimentation();
+  const { closeAddDialog } = useOpenCloseAddDialog();
 
   const handleClick = () => {
     addMovimentation(currentMovimentation);
     closeAddDialog();
+    resetCurrentMovimentationFields();
   };
 
   return (

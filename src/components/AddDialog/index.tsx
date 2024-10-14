@@ -1,44 +1,32 @@
-import { FC, FormEvent, JSX, useEffect } from "react";
+import { FC, FormEvent, JSX } from "react";
+
 import AddButton from "./AddButton";
-import Header from "../Dialog/Header";
-import H1 from "../Dialog/H1";
 import CloseButton from "../Dialog/CloseButton";
 import Form from "../Dialog/Form";
-import InputWrapper from "../Dialog/InputWrapper";
+import Header from "../Dialog/Header";
+import H1 from "../Dialog/H1";
 import Input from "../Dialog/Input";
+import InputWrapper from "../Dialog/InputWrapper";
 import Select from "../Dialog/Select";
-import { useOpenCloseAddDialogCtx } from "../../context/OpenCloseAddDialogCtx";
-import { useCurrentMovimentationCtx } from "../../context/CurrentMovimentationCtx";
-import MovimentationType from "../../utils/enums/movimentationType";
+
+import { useCurrentMovimentation } from "../../context/CurrentMovimentationCtx";
 import { AnimatePresence, motion } from "framer-motion";
-import { useMovimentationCtx } from "../../context/MovimentationCtx";
+import MovimentationType from "../../utils/enums/movimentationType";
+import { useOpenCloseAddDialog } from "../../context/OpenCloseAddDialogCtx";
+import { IMovimentation } from "../../utils/interfaces/movimentation";
 
 const AddDialog: FC = (): JSX.Element => {
-  const { addDialogIsOpen, closeAddDialog }: any = useOpenCloseAddDialogCtx();
-  const { currentMovimentation, setCurrentMovimentation }: any =
-    useCurrentMovimentationCtx();
-  const { receivedValues, spentValues }: any = useMovimentationCtx();
+  const { addDialogIsOpen, closeAddDialog } = useOpenCloseAddDialog();
+  const { currentMovimentation, setCurrentMovimentation } =
+    useCurrentMovimentation();
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-  };
+  const handleSubmit = (event: FormEvent) => event.preventDefault();
 
-  const handleChange = (field: string, value: string) => {
-    setCurrentMovimentation((prev: any) => ({
+  const handleChange = (field: string, value: string) =>
+    setCurrentMovimentation((prev: IMovimentation) => ({
       ...prev,
       [field]: value,
     }));
-  };
-
-  useEffect(() => {
-    setCurrentMovimentation({
-      id: "",
-      date: "",
-      value: 0,
-      reason: "",
-      type: MovimentationType.Outcome,
-    });
-  }, [receivedValues, spentValues]);
 
   return (
     <AnimatePresence>
@@ -61,7 +49,7 @@ const AddDialog: FC = (): JSX.Element => {
                 <Input
                   type="date"
                   id="date"
-                  value={currentMovimentation.date}
+                  value={currentMovimentation.date as string}
                   field="date"
                   handleChange={handleChange}
                 />
@@ -73,7 +61,7 @@ const AddDialog: FC = (): JSX.Element => {
                   id="value"
                   placeholder="2,00"
                   step={0.1}
-                  value={currentMovimentation.value}
+                  value={currentMovimentation.value as string}
                   min={0}
                   field="value"
                   handleChange={handleChange}

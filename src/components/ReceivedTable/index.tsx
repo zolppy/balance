@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useMovimentationCtx } from "../../context/MovimentationCtx";
+import { useMovimentation } from "../../context/MovimentationCtx";
 import { IMovimentation } from "../../utils/interfaces/movimentation";
 import { moneyFormatter } from "../../utils/functions/formatter";
 import Td from "../Td";
@@ -7,17 +7,17 @@ import Th from "../Th";
 // import EditButton from "../EditButton";
 import RemoveButton from "../RemoveButton";
 import TableButtonWrapper from "../TableButtonWrapper";
-import { useOpenCloseRemoveDialogCtx } from "../../context/OpenCloseRemoveDialogCtx";
-import { useCurrentRemoveTargetCtx } from "../../context/CurrentRemoveTargetCtx";
+import { useOpenCloseRemoveDialog } from "../../context/OpenCloseRemoveDialogCtx";
+import { useCurrentRemoveTarget } from "../../context/CurrentRemoveTargetCtx";
 
-const ReceivedTable: React.FC = ({}): React.JSX.Element => {
+const ReceivedTable: React.FC = (): React.JSX.Element => {
   const trRefs = useRef<(HTMLTableRowElement | null)[]>([]);
-  const { receivedValues }: any = useMovimentationCtx();
-  const { openRemoveDialog }: any = useOpenCloseRemoveDialogCtx();
-  const { setRemoveTargetID }: any = useCurrentRemoveTargetCtx();
+  const { receivedValues } = useMovimentation();
+  const { openRemoveDialog } = useOpenCloseRemoveDialog();
+  const { setRemoveTargetID } = useCurrentRemoveTarget();
 
   const remove = (index: number) => {
-    setRemoveTargetID(trRefs.current[index]?.id);
+    setRemoveTargetID(trRefs.current[index]?.id as string);
     openRemoveDialog();
   };
 

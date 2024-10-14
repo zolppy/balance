@@ -16,26 +16,28 @@ const CurrentRemoveTargetCtx = createContext<ICurrentRemoveTarget | undefined>(
   undefined
 );
 
-const useCurrentRemoveTargetCtx = () => {
-  return useContext<ICurrentRemoveTarget | undefined>(CurrentRemoveTargetCtx);
+const useCurrentRemoveTarget = (): ICurrentRemoveTarget => {
+  const context = useContext(CurrentRemoveTargetCtx);
+  if (!context) {
+    throw new Error(
+      "useCurrentRemoveTarget must be used within a CurrentRemoveTargetProvider"
+    );
+  }
+  return context;
 };
 
 const CurrentRemoveTargetProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [removeTargetID, setRemoveTargetID] = useState<string>("");
-  useState<HTMLTableRowElement | null>(null);
 
   return (
     <CurrentRemoveTargetCtx.Provider
-      value={{
-        removeTargetID,
-        setRemoveTargetID,
-      }}
+      value={{ removeTargetID, setRemoveTargetID }}
     >
       {children}
     </CurrentRemoveTargetCtx.Provider>
   );
 };
 
-export { useCurrentRemoveTargetCtx, CurrentRemoveTargetProvider };
+export { CurrentRemoveTargetProvider, useCurrentRemoveTarget };

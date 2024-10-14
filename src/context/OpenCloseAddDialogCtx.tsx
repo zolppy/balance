@@ -1,6 +1,6 @@
-import React, { createContext, useContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
-interface IOpenCloseAddDialog {
+export interface IOpenCloseAddDialog {
   addDialogIsOpen: boolean;
   openAddDialog: () => void;
   closeAddDialog: () => void;
@@ -9,10 +9,6 @@ interface IOpenCloseAddDialog {
 const OpenCloseAddDialogCtx = createContext<IOpenCloseAddDialog | undefined>(
   undefined
 );
-
-const useOpenCloseAddDialogCtx = () => {
-  return useContext<IOpenCloseAddDialog | undefined>(OpenCloseAddDialogCtx);
-};
 
 const OpenCloseAddDialogProvider: React.FC<{ children: ReactNode }> = ({
   children,
@@ -40,4 +36,14 @@ const OpenCloseAddDialogProvider: React.FC<{ children: ReactNode }> = ({
   );
 };
 
-export { useOpenCloseAddDialogCtx, OpenCloseAddDialogProvider };
+export { OpenCloseAddDialogCtx, OpenCloseAddDialogProvider };
+
+export const useOpenCloseAddDialog = (): IOpenCloseAddDialog => {
+  const context = useContext(OpenCloseAddDialogCtx);
+  if (!context) {
+    throw new Error(
+      "useOpenCloseAddDialog must be used within a OpenCloseAddDialogProvider"
+    );
+  }
+  return context;
+};

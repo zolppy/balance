@@ -1,8 +1,8 @@
 import { BiPlus } from "react-icons/bi";
-import { useOpenCloseAddDialogCtx } from "../../context/OpenCloseAddDialogCtx";
+import { useOpenCloseAddDialog } from "../../context/OpenCloseAddDialogCtx";
 
 const FloatingButton: React.FC = (): React.JSX.Element => {
-  const { openAddDialog }: any = useOpenCloseAddDialogCtx();
+  const { openAddDialog } = useOpenCloseAddDialog();
 
   return (
     <button

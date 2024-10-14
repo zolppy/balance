@@ -10,10 +10,12 @@ const OpenCloseRemoveDialogCtx = createContext<
   IOpenCloseRemoveDialog | undefined
 >(undefined);
 
-const useOpenCloseRemoveDialogCtx = () => {
-  return useContext<IOpenCloseRemoveDialog | undefined>(
-    OpenCloseRemoveDialogCtx
-  );
+const useOpenCloseRemoveDialog = (): IOpenCloseRemoveDialog => {
+  const context = useContext(OpenCloseRemoveDialogCtx);
+  if (!context) {
+    throw new Error("");
+  }
+  return context;
 };
 
 const OpenCloseRemoveDialogProvider: FC<{ children: ReactNode }> = ({
@@ -38,4 +40,4 @@ const OpenCloseRemoveDialogProvider: FC<{ children: ReactNode }> = ({
   );
 };
 
-export { useOpenCloseRemoveDialogCtx, OpenCloseRemoveDialogProvider };
+export { useOpenCloseRemoveDialog, OpenCloseRemoveDialogProvider };

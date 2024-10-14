@@ -1,6 +1,6 @@
-const H1: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}): React.JSX.Element => {
+import { FC, JSX, ReactNode } from "react";
+
+const H1: FC<{ children: ReactNode }> = ({ children }): JSX.Element => {
   return <h1 className="font-bold text-xl">{children}</h1>;
 };
 

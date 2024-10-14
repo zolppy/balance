@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { moneyFormatter } from "../../utils/functions/formatter";
-import { useMovimentationCtx } from "../../context/MovimentationCtx";
+import { useMovimentation } from "../../context/MovimentationCtx";
 import { IMovimentation } from "../../utils/interfaces/movimentation";
 
 const Informations: React.FC = (): React.JSX.Element => {
-  const { receivedValues, spentValues }: any = useMovimentationCtx();
+  const { receivedValues, spentValues } = useMovimentation();
   const [totalReceived, setTotalReceived] = useState<number>(0);
   const [totalSpent, setTotalSpent] = useState<number>(0);
   const [balance, setBalance] = useState<number>(0);
