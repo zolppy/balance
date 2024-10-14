@@ -1,19 +1,24 @@
 import { useRef } from "react";
+import { useMovimentationCtx } from "../../context/MovimentationCtx";
+import { IMovimentation } from "../../utils/interfaces/movimentation";
+import { moneyFormatter } from "../../utils/functions/formatter";
 import Td from "../Td";
 import Th from "../Th";
 import EditButton from "../EditButton";
 import RemoveButton from "../RemoveButton";
 import TableButtonWrapper from "../TableButtonWrapper";
-import { useMovimentationCtx } from "../../context/MovimentationCtx";
-import { IMovimentation } from "../../utils/interfaces/movimentation";
-import { moneyFormatter } from "../../utils/functions/formatter";
+import { useOpenCloseRemoveDialogCtx } from "../../context/OpenCloseRemoveDialogCtx";
+import { useCurrentRemoveTargetCtx } from "../../context/CurrentRemoveTargetCtx";
 
 const ReceivedTable: React.FC = ({}): React.JSX.Element => {
   const trRefs = useRef<(HTMLTableRowElement | null)[]>([]);
   const { receivedValues }: any = useMovimentationCtx();
+  const { openRemoveDialog }: any = useOpenCloseRemoveDialogCtx();
+  const { setRemoveTargetID }: any = useCurrentRemoveTargetCtx();
 
   const remove = (index: number) => {
-    trRefs.current[index]?.remove();
+    setRemoveTargetID(trRefs.current[index]?.id);
+    openRemoveDialog();
   };
 
   return (
@@ -26,10 +31,11 @@ const ReceivedTable: React.FC = ({}): React.JSX.Element => {
           <Th>Ação</Th>
         </tr>
       </thead>
-      <tbody className="bg-green-600">
+      <tbody className="bg-green-600 text-white">
         {receivedValues.map((receivedValue: IMovimentation, index: number) => (
           <tr
             key={receivedValue.id}
+            id={receivedValue.id}
             className="hover:bg-green-500 transition-colors"
             ref={(el) => (trRefs.current[index] = el)}
           >

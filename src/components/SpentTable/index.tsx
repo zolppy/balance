@@ -7,13 +7,18 @@ import Th from "../Th";
 import EditButton from "../EditButton";
 import RemoveButton from "../RemoveButton";
 import TableButtonWrapper from "../TableButtonWrapper";
+import { useOpenCloseRemoveDialogCtx } from "../../context/OpenCloseRemoveDialogCtx";
+import { useCurrentRemoveTargetCtx } from "../../context/CurrentRemoveTargetCtx";
 
 const SpentTable: React.FC = (): React.JSX.Element => {
   const { spentValues }: any = useMovimentationCtx();
+  const { openRemoveDialog }: any = useOpenCloseRemoveDialogCtx();
+  const { setRemoveTargetID }: any = useCurrentRemoveTargetCtx();
   const trRefs = useRef<(HTMLTableRowElement | null)[]>([]);
 
   const remove = (index: number) => {
-    trRefs.current[index]?.remove();
+    setRemoveTargetID(trRefs.current[index]?.id);
+    openRemoveDialog();
   };
 
   return (
@@ -30,6 +35,7 @@ const SpentTable: React.FC = (): React.JSX.Element => {
         {spentValues.map((spentValue: IMovimentation, index: number) => (
           <tr
             key={spentValue.id}
+            id={spentValue.id}
             className="hover:bg-red-500 transition-colors"
             ref={(el) => (trRefs.current[index] = el)}
           >

@@ -5,14 +5,20 @@ import "./index.css";
 import { MovimentationProvider } from "./context/MovimentationCtx.tsx";
 import { OpenCloseAddDialogProvider } from "./context/OpenCloseAddDialogCtx.tsx";
 import { CurrentMovimentationProvider } from "./context/CurrentMovimentationCtx.tsx";
+import { OpenCloseRemoveDialogProvider } from "./context/OpenCloseRemoveDialogCtx.tsx";
+import { CurrentRemoveTargetProvider } from "./context/CurrentRemoveTargetCtx.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <MovimentationProvider>
       <OpenCloseAddDialogProvider>
-        <CurrentMovimentationProvider>
-          <App />
-        </CurrentMovimentationProvider>
+        <OpenCloseRemoveDialogProvider>
+          <CurrentMovimentationProvider>
+            <CurrentRemoveTargetProvider>
+              <App />
+            </CurrentRemoveTargetProvider>
+          </CurrentMovimentationProvider>
+        </OpenCloseRemoveDialogProvider>
       </OpenCloseAddDialogProvider>
     </MovimentationProvider>
   </StrictMode>

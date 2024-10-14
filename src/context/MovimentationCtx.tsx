@@ -61,7 +61,28 @@ const MovimentationProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const removeMovimentation = (id: string) => {
-    console.log(id);
+    const index1 = receivedValues.findIndex(
+      (receivedValue) => receivedValue.id === id
+    );
+    const index2 = spentValues.findIndex((spentValue) => spentValue.id === id);
+
+    if (index1 !== -1) {
+      receivedValues.splice(index1, 1);
+      const updatedReceivedValues = receivedValues.filter(
+        (receivedValue) => receivedValue.id !== id
+      );
+      setReceivedValues(updatedReceivedValues);
+      saveToStorage("receivedValues", receivedValues);
+    }
+
+    if (index2 !== -1) {
+      spentValues.splice(index2, 1);
+      const updatedSpentValues = spentValues.filter(
+        (spentValue) => spentValue.id !== id
+      );
+      setSpentValues(updatedSpentValues);
+      saveToStorage("spentValues", spentValues);
+    }
   };
 
   return (

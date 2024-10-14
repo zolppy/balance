@@ -4,6 +4,7 @@ import ReceivedTable from "./components/ReceivedTable";
 import SpentTable from "./components/SpentTable";
 import FloatingButton from "./components/FloatingButton";
 import AddDialog from "./components/AddDialog";
+import RemoveDialog from "./components/RemoveDialog";
 
 const App: React.FC = (): React.JSX.Element => {
   return (
@@ -25,6 +26,7 @@ const App: React.FC = (): React.JSX.Element => {
         <section>
           <FloatingButton />
           <AddDialog />
+          <RemoveDialog />
         </section>
       </main>
     </div>
