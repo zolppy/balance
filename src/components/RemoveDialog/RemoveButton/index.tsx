@@ -1,7 +1,7 @@
 import { FC, JSX } from "react";
-import { useOpenCloseRemoveDialog } from "../../../context/OpenCloseRemoveDialog/Hook";
-import { useCurrentRemoveTarget } from "../../../context/CurrentRemoveTarget/Hook";
-import { useMovimentation } from "../../../context/Movimentation/Hook";
+import { useOpenCloseRemoveDialog } from "../../../../context/OpenCloseRemoveDialogCtx";
+import { useCurrentRemoveTarget } from "../../../../context/CurrentRemoveTargetCtx";
+import { useMovimentation } from "../../../../context/MovimentationCtx";
 
 const RemoveButton: FC = (): JSX.Element => {
   const { closeRemoveDialog } = useOpenCloseRemoveDialog();

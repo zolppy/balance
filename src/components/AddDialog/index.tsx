@@ -9,11 +9,11 @@ import Input from "../Dialog/Input";
 import InputWrapper from "../Dialog/InputWrapper";
 import Select from "../Dialog/Select";
 
-import { useCurrentMovimentation } from "../../context/CurrentMovimentation/Hook";
+import { useCurrentMovimentation } from "../../../context/CurrentMovimentationCtx";
 import { AnimatePresence, motion } from "framer-motion";
-import MovimentationType from "../../utils/enums/movimentationType";
-import { useOpenCloseAddDialog } from "../../context/OpenCloseAddDialog/Hook";
-import { IMovimentation } from "../../utils/interfaces/movimentation";
+import MovimentationType from "../../../utils/enums/movimentationType";
+import { useOpenCloseAddDialog } from "../../../context/OpenCloseAddDialogCtx";
+import { IMovimentation } from "../../../utils/interfaces/movimentation";
 
 const AddDialog: FC = (): JSX.Element => {
   const { addDialogIsOpen, closeAddDialog } = useOpenCloseAddDialog();
@@ -51,6 +51,7 @@ const AddDialog: FC = (): JSX.Element => {
                   id="date"
                   value={currentMovimentation.date as string}
                   field="date"
+                  required={true}
                   handleChange={handleChange}
                 />
               </InputWrapper>
@@ -64,6 +65,7 @@ const AddDialog: FC = (): JSX.Element => {
                   value={currentMovimentation.value as string}
                   min={0}
                   field="value"
+                  required={true}
                   handleChange={handleChange}
                 />
               </InputWrapper>
@@ -75,6 +77,7 @@ const AddDialog: FC = (): JSX.Element => {
                   placeholder="Breve descrição da movimentação"
                   value={currentMovimentation.reason}
                   field="reason"
+                  required={true}
                   handleChange={handleChange}
                 />
               </InputWrapper>

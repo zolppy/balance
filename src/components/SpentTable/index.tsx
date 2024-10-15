@@ -1,14 +1,14 @@
 import { useRef } from "react";
-import { useMovimentation } from "../../context/Movimentation/Hook";
-import { IMovimentation } from "../../utils/interfaces/movimentation";
-import { moneyFormatter } from "../../utils/functions/formatter";
+import { useMovimentation } from "../../../context/MovimentationCtx";
+import { IMovimentation } from "../../../utils/interfaces/movimentation";
+import { moneyFormatter } from "../../../utils/functions/formatter";
 import Td from "../Td";
 import Th from "../Th";
 // import EditButton from "../EditButton";
 import RemoveButton from "../RemoveButton";
 import TableButtonWrapper from "../TableButtonWrapper";
-import { useOpenCloseRemoveDialog } from "../../context/OpenCloseRemoveDialog/Hook";
-import { useCurrentRemoveTarget } from "../../context/CurrentRemoveTarget/Hook";
+import { useOpenCloseRemoveDialog } from "../../../context/OpenCloseRemoveDialogCtx";
+import { useCurrentRemoveTarget } from "../../../context/CurrentRemoveTargetCtx";
 
 const SpentTable: React.FC = (): React.JSX.Element => {
   const { spentValues } = useMovimentation();

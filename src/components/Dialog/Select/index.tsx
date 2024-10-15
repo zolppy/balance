@@ -1,4 +1,4 @@
-import MovimentationType from "../../../utils/enums/movimentationType";
+import MovimentationType from "../../../../utils/enums/movimentationType";
 
 interface ISelect {
   id: string;
@@ -17,8 +17,9 @@ const Select: React.FC<ISelect> = ({
     <select
       defaultValue={MovimentationType.Outcome}
       id={id}
-      className="bg-inherit border p-2 rounded-lg"
+      required
       onChange={(event) => handleChange(field, event.target.value)}
+      className="bg-inherit border p-2 rounded-lg"
     >
       {children}
     </select>

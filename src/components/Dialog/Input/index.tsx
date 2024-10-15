@@ -6,6 +6,7 @@ interface IInput {
   step?: number;
   value: string;
   field: string;
+  required: boolean;
   handleChange: (field: string, value: string) => void;
 }
 
@@ -17,6 +18,7 @@ const Input: React.FC<IInput> = ({
   step,
   value,
   field,
+  required,
   handleChange,
 }): React.JSX.Element => {
   return (
@@ -27,6 +29,7 @@ const Input: React.FC<IInput> = ({
       min={min}
       step={step}
       value={value}
+      required={required}
       onChange={(event) => handleChange(field, event.target.value)}
       className="bg-inherit border p-2 rounded-lg w-full"
     />

@@ -1,12 +1,30 @@
-import { ReactNode, useState } from "react";
-import MovimentationType from "../../utils/enums/movimentationType";
-import { dateFormatter } from "../../utils/functions/formatter";
+import React, { createContext, ReactNode, useContext, useState } from "react";
+import MovimentationType from "../utils/enums/movimentationType";
+import { dateFormatter } from "../utils/functions/formatter";
 import {
   loadFromStorage,
   saveToStorage,
-} from "../../utils/functions/localStorage";
-import { IMovimentation } from "../../utils/interfaces/movimentation";
-import { MovimentationCtx } from "./Ctx";
+} from "../utils/functions/localStorage";
+import { IMovimentation } from "../utils/interfaces/movimentation";
+
+interface IMovimentationCtx {
+  receivedValues: IMovimentation[];
+  spentValues: IMovimentation[];
+  addMovimentation: (movimentation: IMovimentation) => void;
+  removeMovimentation: (id: string) => void;
+}
+
+const MovimentationCtx = createContext<IMovimentationCtx | undefined>(
+  undefined
+);
+
+const useMovimentation = (): IMovimentationCtx => {
+  const context = useContext(MovimentationCtx);
+  if (!context) {
+    throw new Error("");
+  }
+  return context;
+};
 
 const MovimentationProvider: React.FC<{ children: ReactNode }> = ({
   children,
@@ -85,4 +103,4 @@ const MovimentationProvider: React.FC<{ children: ReactNode }> = ({
   );
 };
 
-export default MovimentationProvider;
+export { MovimentationProvider, useMovimentation };

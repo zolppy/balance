@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { moneyFormatter } from "../../utils/functions/formatter";
-import { useMovimentation } from "../../context/Movimentation/Hook";
-import { IMovimentation } from "../../utils/interfaces/movimentation";
+import { moneyFormatter } from "../../../utils/functions/formatter";
+import { useMovimentation } from "../../../context/MovimentationCtx";
+import { IMovimentation } from "../../../utils/interfaces/movimentation";
 
 const Informations: React.FC = (): React.JSX.Element => {
   const { receivedValues, spentValues } = useMovimentation();
