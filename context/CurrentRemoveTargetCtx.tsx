@@ -12,29 +12,27 @@ interface ICurrentRemoveTarget {
   setRemoveTargetID: Dispatch<SetStateAction<string>>;
 }
 
-const CurrentRemoveTargetCtx = createContext<ICurrentRemoveTarget | undefined>(
+const CurrentRemoveTarget = createContext<ICurrentRemoveTarget | undefined>(
   undefined
 );
 
 const useCurrentRemoveTarget = (): ICurrentRemoveTarget => {
-  const context = useContext(CurrentRemoveTargetCtx);
+  const context = useContext(CurrentRemoveTarget);
+
   if (!context) {
     throw new Error("");
   }
+
   return context;
 };
 
-const CurrentRemoveTargetProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+const CurrentRemoveTargetProvider = ({ children }: { children: ReactNode }) => {
   const [removeTargetID, setRemoveTargetID] = useState<string>("");
 
   return (
-    <CurrentRemoveTargetCtx.Provider
-      value={{ removeTargetID, setRemoveTargetID }}
-    >
+    <CurrentRemoveTarget.Provider value={{ removeTargetID, setRemoveTargetID }}>
       {children}
-    </CurrentRemoveTargetCtx.Provider>
+    </CurrentRemoveTarget.Provider>
   );
 };
 

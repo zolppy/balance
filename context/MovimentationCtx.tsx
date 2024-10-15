@@ -1,11 +1,11 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import MovimentationType from "../utils/enums/movimentationType";
 import { dateFormatter } from "../utils/functions/formatter";
+import { IMovimentation } from "../utils/interfaces/movimentation";
 import {
   loadFromStorage,
   saveToStorage,
 } from "../utils/functions/localStorage";
-import { IMovimentation } from "../utils/interfaces/movimentation";
+import { MovimentationType } from "../utils/enums/movimentationType";
 
 interface IMovimentationCtx {
   receivedValues: IMovimentation[];
@@ -14,21 +14,17 @@ interface IMovimentationCtx {
   removeMovimentation: (id: string) => void;
 }
 
-const MovimentationCtx = createContext<IMovimentationCtx | undefined>(
-  undefined
-);
+const Movimentation = createContext<IMovimentationCtx | undefined>(undefined);
 
 const useMovimentation = (): IMovimentationCtx => {
-  const context = useContext(MovimentationCtx);
+  const context = useContext(Movimentation);
   if (!context) {
     throw new Error("");
   }
   return context;
 };
 
-const MovimentationProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+const MovimentationProvider = ({ children }: { children: ReactNode }) => {
   const [receivedValues, setReceivedValues] = useState<IMovimentation[]>(
     loadFromStorage("receivedValues")
   );
@@ -71,26 +67,26 @@ const MovimentationProvider: React.FC<{ children: ReactNode }> = ({
     const index2 = spentValues.findIndex((spentValue) => spentValue.id === id);
 
     if (index1 !== -1) {
-      receivedValues.splice(index1, 1);
       const updatedReceivedValues = receivedValues.filter(
         (receivedValue) => receivedValue.id !== id
       );
+
       setReceivedValues(updatedReceivedValues);
-      saveToStorage("receivedValues", receivedValues);
+      saveToStorage("receivedValues", updatedReceivedValues);
     }
 
     if (index2 !== -1) {
-      spentValues.splice(index2, 1);
       const updatedSpentValues = spentValues.filter(
         (spentValue) => spentValue.id !== id
       );
+
       setSpentValues(updatedSpentValues);
-      saveToStorage("spentValues", spentValues);
+      saveToStorage("spentValues", updatedSpentValues);
     }
   };
 
   return (
-    <MovimentationCtx.Provider
+    <Movimentation.Provider
       value={{
         receivedValues,
         spentValues,
@@ -99,7 +95,7 @@ const MovimentationProvider: React.FC<{ children: ReactNode }> = ({
       }}
     >
       {children}
-    </MovimentationCtx.Provider>
+    </Movimentation.Provider>
   );
 };
 

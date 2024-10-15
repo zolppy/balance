@@ -3,4 +3,4 @@ enum MovimentationType {
   Outcome = "outcome",
 }
 
-export default MovimentationType;
+export { MovimentationType };

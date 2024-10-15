@@ -1,65 +1,62 @@
 import {
   createContext,
   Dispatch,
-  FC,
   ReactNode,
   SetStateAction,
   useContext,
   useState,
 } from "react";
-import MovimentationType from "../utils/enums/movimentationType";
 import { IMovimentation } from "../utils/interfaces/movimentation";
+import { MovimentationType } from "../utils/enums/movimentationType";
 
-interface ICurrentMovimentationCtx {
+interface ICurrentMovimentation {
   currentMovimentation: IMovimentation;
   setCurrentMovimentation: Dispatch<SetStateAction<IMovimentation>>;
-  resetCurrentMovimentationFields: () => void;
+  resetCurrentMovimentation: () => void;
 }
 
-const CurrentMovimentationCtx = createContext<
-  ICurrentMovimentationCtx | undefined
->(undefined);
+const CurrentMovimentation = createContext<ICurrentMovimentation | undefined>(
+  undefined
+);
 
-const useCurrentMovimentation = (): ICurrentMovimentationCtx => {
-  const context = useContext(CurrentMovimentationCtx);
+const useCurrentMovimentation = (): ICurrentMovimentation => {
+  const context = useContext(CurrentMovimentation);
+
   if (!context) {
     throw new Error("");
   }
+
   return context;
 };
 
-const CurrentMovimentationProvider: FC<{ children: ReactNode }> = ({
+const CurrentMovimentationProvider = ({
   children,
+}: {
+  children: ReactNode;
 }) => {
-  const [currentMovimentation, setCurrentMovimentation] =
-    useState<IMovimentation>({
-      id: "",
-      date: "",
-      value: "",
-      reason: "",
-      type: MovimentationType.Outcome,
-    });
-
-  const resetCurrentMovimentationFields = () => {
-    setCurrentMovimentation({
-      id: "",
-      date: "",
-      value: "",
-      reason: "",
-      type: MovimentationType.Outcome,
-    });
+  const initialValue: IMovimentation = {
+    id: "",
+    date: "",
+    value: "",
+    reason: "",
+    type: MovimentationType.Outcome,
   };
 
+  const [currentMovimentation, setCurrentMovimentation] =
+    useState<IMovimentation>(initialValue);
+
+  const resetCurrentMovimentation = () => setCurrentMovimentation(initialValue);
+
   return (
-    <CurrentMovimentationCtx.Provider
+    <CurrentMovimentation.Provider
       value={{
         currentMovimentation,
         setCurrentMovimentation,
-        resetCurrentMovimentationFields,
+        resetCurrentMovimentation,
       }}
     >
       {children}
-    </CurrentMovimentationCtx.Provider>
+    </CurrentMovimentation.Provider>
   );
 };
 

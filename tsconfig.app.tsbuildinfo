@@ -1,1 +1,36 @@
-{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/AddDialog/index.tsx","./src/components/AddDialog/ApplyButton/index.tsx","./src/components/Dialog/CloseButton/index.tsx","./src/components/Dialog/Container/index.tsx","./src/components/Dialog/Form/index.tsx","./src/components/Dialog/H1/index.tsx","./src/components/Dialog/Header/index.tsx","./src/components/Dialog/Input/index.tsx","./src/components/Dialog/InputWrapper/index.tsx","./src/components/Dialog/Select/index.tsx","./src/components/EditButton/index.tsx","./src/components/FloatingButton/index.tsx","./src/components/Header/index.tsx","./src/components/Informations/index.tsx","./src/components/ReceivedTable/index.tsx","./src/components/RemoveButton/index.tsx","./src/components/SpentTable/index.tsx","./src/components/TableButtonWrapper/index.tsx","./src/components/Td/index.tsx","./src/components/Th/index.tsx","./src/context/CurrentMovimentationCtx.tsx","./src/context/MovimentationCtx.tsx","./src/context/OpenCloseAddDialogCtx.tsx","./src/utils/enums/movimentationType.ts","./src/utils/functions/formatter.ts","./src/utils/functions/localStorage.ts","./src/utils/interfaces/movimentation.ts","./src/utils/types/movimentation.ts"],"version":"5.6.2"}
+{
+  "root": [
+    "./src/App.tsx",
+    "./src/main.tsx",
+    "./src/vite-env.d.ts",
+    "./src/components/AddModal/index.tsx",
+    "./src/components/AddModal/ApplyButton/index.tsx",
+    "./src/components/Modal/CloseButton/index.tsx",
+    "./src/components/Modal/Container/index.tsx",
+    "./src/components/Modal/Form/index.tsx",
+    "./src/components/Modal/H1/index.tsx",
+    "./src/components/Modal/Header/index.tsx",
+    "./src/components/Modal/Input/index.tsx",
+    "./src/components/Modal/InputWrapper/index.tsx",
+    "./src/components/Modal/Select/index.tsx",
+    "./src/components/EditButton/index.tsx",
+    "./src/components/FloatingButton/index.tsx",
+    "./src/components/Header/index.tsx",
+    "./src/components/Informations/index.tsx",
+    "./src/components/ReceivedTable/index.tsx",
+    "./src/components/RemoveButton/index.tsx",
+    "./src/components/SpentTable/index.tsx",
+    "./src/components/TableButtonWrapper/index.tsx",
+    "./src/components/Td/index.tsx",
+    "./src/components/Th/index.tsx",
+    "./src/context/CurrentMovimentationCtx.tsx",
+    "./src/context/MovimentationCtx.tsx",
+    "./src/context/OpenCloseAddModalCtx.tsx",
+    "./src/utils/enums/movimentationType.ts",
+    "./src/utils/functions/formatter.ts",
+    "./src/utils/functions/localStorage.ts",
+    "./src/utils/interfaces/movimentation.ts",
+    "./src/utils/types/movimentation.ts"
+  ],
+  "version": "5.6.2"
+}

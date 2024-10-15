@@ -1,27 +1,22 @@
 import { useEffect, useState } from "react";
 import { moneyFormatter } from "../../../utils/functions/formatter";
+import { sumMovimentations } from "../../../utils/functions/operations";
 import { useMovimentation } from "../../../context/MovimentationCtx";
-import { IMovimentation } from "../../../utils/interfaces/movimentation";
 
-const Informations: React.FC = (): React.JSX.Element => {
-  const { receivedValues, spentValues } = useMovimentation();
+const Informations = () => {
+  const [balance, setBalance] = useState<number>(0);
   const [totalReceived, setTotalReceived] = useState<number>(0);
   const [totalSpent, setTotalSpent] = useState<number>(0);
-  const [balance, setBalance] = useState<number>(0);
-
-  useEffect(() => {
-    const sum = (arr: IMovimentation[]): number =>
-      Array.from(arr)
-        .map((item) => item.value)
-        .reduce((acm, curr) => Number(acm) + Number(curr), 0) as number;
-
-    setTotalReceived(sum(receivedValues));
-    setTotalSpent(sum(spentValues));
-  }, [receivedValues, spentValues]);
+  const { receivedValues, spentValues } = useMovimentation();
 
   useEffect(() => {
     setBalance(totalReceived - totalSpent);
   }, [totalReceived, totalSpent]);
+
+  useEffect(() => {
+    setTotalReceived(sumMovimentations(receivedValues));
+    setTotalSpent(sumMovimentations(spentValues));
+  }, [receivedValues, spentValues]);
 
   return (
     <article className="uppercase leading-6">

@@ -1,25 +1,29 @@
 import { useRef } from "react";
-import { useMovimentation } from "../../../context/MovimentationCtx";
+import BodyRow from "../Table/BodyRow";
+import RemoveButton from "../RemoveButton";
+import TableButtonWrapper from "../Table/TableButtonWrapper";
+import Td from "../Table/Td";
+import Th from "../Table/Th";
 import { IMovimentation } from "../../../utils/interfaces/movimentation";
 import { moneyFormatter } from "../../../utils/functions/formatter";
-import Td from "../Td";
-import Th from "../Th";
-// import EditButton from "../EditButton";
-import RemoveButton from "../RemoveButton";
-import TableButtonWrapper from "../TableButtonWrapper";
-import { useOpenCloseRemoveDialog } from "../../../context/OpenCloseRemoveDialogCtx";
+import { MovimentationType } from "../../../utils/enums/movimentationType";
 import { useCurrentRemoveTarget } from "../../../context/CurrentRemoveTargetCtx";
+import { useMovimentation } from "../../../context/MovimentationCtx";
+import { useOpenCloseRemoveModal } from "../../../context/OpenCloseRemoveModalCtx";
 
-const SpentTable: React.FC = (): React.JSX.Element => {
-  const { spentValues } = useMovimentation();
-  const { openRemoveDialog } = useOpenCloseRemoveDialog();
+const SpentTable = () => {
+  const { openRemoveModal } = useOpenCloseRemoveModal();
   const { setRemoveTargetID } = useCurrentRemoveTarget();
+  const { spentValues } = useMovimentation();
   const trRefs = useRef<(HTMLTableRowElement | null)[]>([]);
 
-  const remove = (index: number) => {
+  const removeMovimentation = (index: number) => {
     setRemoveTargetID(trRefs.current[index]?.id as string);
-    openRemoveDialog();
+    openRemoveModal();
   };
+
+  const setRef = (el: HTMLTableRowElement | null, index: number) =>
+    (trRefs.current[index] = el);
 
   return (
     <table className="w-full">
@@ -33,11 +37,12 @@ const SpentTable: React.FC = (): React.JSX.Element => {
       </thead>
       <tbody className="bg-red-600 text-white">
         {spentValues.map((spentValue: IMovimentation, index: number) => (
-          <tr
+          <BodyRow
             key={spentValue.id}
             id={spentValue.id}
-            className="hover:bg-red-500 transition-colors"
-            ref={(el) => (trRefs.current[index] = el)}
+            index={index}
+            rowType={MovimentationType.Outcome}
+            setRef={setRef}
           >
             <Td>{spentValue.date.toString()}</Td>
             <Td>{moneyFormatter(Number(spentValue.value))}</Td>
@@ -46,11 +51,10 @@ const SpentTable: React.FC = (): React.JSX.Element => {
             </td>
             <Td>
               <TableButtonWrapper>
-                {/* <EditButton /> */}
-                <RemoveButton index={index} handleClick={remove} />
+                <RemoveButton index={index} handleClick={removeMovimentation} />
               </TableButtonWrapper>
             </Td>
-          </tr>
+          </BodyRow>
         ))}
       </tbody>
     </table>

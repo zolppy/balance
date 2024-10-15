@@ -7,10 +7,7 @@ interface IRemoveButton {
   handleClick: (index: number) => void;
 }
 
-const RemoveButton: React.FC<IRemoveButton> = ({
-  index,
-  handleClick,
-}): React.JSX.Element => {
+const RemoveButton = ({ index, handleClick }: IRemoveButton) => {
   const [isHover, setIsHover] = useState<boolean>(false);
 
   return (
@@ -18,12 +15,9 @@ const RemoveButton: React.FC<IRemoveButton> = ({
       onMouseOver={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       onClick={() => handleClick(index)}
+      className="text-3xl"
     >
-      {isHover ? (
-        <BiSolidTrashAlt className="text-3xl" />
-      ) : (
-        <BiTrashAlt className="text-3xl" />
-      )}
+      {isHover ? <BiSolidTrashAlt /> : <BiTrashAlt />}
     </button>
   );
 };
