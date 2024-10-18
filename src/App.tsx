@@ -1,5 +1,4 @@
 import AddModal from "./components/AddModal";
-import FloatingButton from "./components/FloatingButton";
 import Header from "./components/Header";
 import Informations from "./components/Informations";
 import ReceivedTable from "./components/ReceivedTable";
@@ -12,7 +11,7 @@ const App = () => {
       <Header />
       <main
         className="py-4 mt-[70px] flex flex-col gap-y-5 min-w-[320px] w-[90%] max-w-[620px] mx-auto"
-        style={{ minHeight: "calc(100svh - 70px)" }}
+        style={{ minHeight: "calc(100svh - 80px)" }}
       >
         <section>
           <article>
@@ -29,7 +28,6 @@ const App = () => {
             <SpentTable />
           </article>
         </section>
-        <FloatingButton />
         <AddModal />
         <RemoveModal />
       </main>
