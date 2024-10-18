@@ -21,7 +21,7 @@ const Informations = () => {
   return (
     <table className="w-full">
       <thead>
-        <tr>
+        <tr className="uppercase">
           <th className="border border-white border-opacity-50 bg-green-700 p-2">
             Recebido
           </th>
