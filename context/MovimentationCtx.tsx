@@ -33,13 +33,17 @@ const MovimentationProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const addMovimentation = (movimentation: IMovimentation) => {
+    const date = new Date(movimentation.date);
+
     if (movimentation.type === MovimentationType.Income) {
       const updatedReceivedValues = [
         ...receivedValues,
         {
           ...movimentation,
           id: crypto.randomUUID(),
-          date: dateFormatter(new Date(movimentation.date)),
+          date: dateFormatter(
+            new Date(date.getTime() + date.getTimezoneOffset() * 60000)
+          ),
         },
       ];
 
@@ -51,7 +55,9 @@ const MovimentationProvider = ({ children }: { children: ReactNode }) => {
         {
           ...movimentation,
           id: crypto.randomUUID(),
-          date: dateFormatter(new Date(movimentation.date)),
+          date: dateFormatter(
+            new Date(date.getTime() + date.getTimezoneOffset() * 60000)
+          ),
         },
       ];
 

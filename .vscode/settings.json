@@ -6,6 +6,6 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
-  "workbench.colorTheme": "Solarized Dark",
+  "workbench.colorTheme": "Dracula Dark+",
   "workbench.iconTheme": "vs-seti"
 }
