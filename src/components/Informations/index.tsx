@@ -19,26 +19,34 @@ const Informations = () => {
   }, [receivedValues, spentValues]);
 
   return (
-    <article className="uppercase leading-6">
-      <p>
-        Total recebido:{" "}
-        <span className="text-green-600 font-bold">
-          {moneyFormatter(totalReceived)}
-        </span>
-      </p>
-      <p>
-        Total gasto:{" "}
-        <span className="text-red-600 font-bold">
-          {moneyFormatter(totalSpent)}
-        </span>
-      </p>
-      <p>
-        Saldo:{" "}
-        <span className="text-blue-600 font-bold">
-          {moneyFormatter(balance)}
-        </span>
-      </p>
-    </article>
+    <table className="w-full">
+      <thead>
+        <tr>
+          <th className="border border-white border-opacity-50 bg-green-700 p-2">
+            Recebido
+          </th>
+          <th className="border border-white border-opacity-50 bg-red-700 p-2">
+            Gasto
+          </th>
+          <th className="border border-white border-opacity-50 bg-blue-700 p-2">
+            Saldo
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className="text-center">
+          <td className="border border-white border-opacity-50 bg-green-600 p-2">
+            {moneyFormatter(totalReceived)}
+          </td>
+          <td className="border border-white border-opacity-50 bg-red-600 p-2">
+            {moneyFormatter(totalSpent)}
+          </td>
+          <td className="border border-white border-opacity-50 bg-blue-600 p-2">
+            {moneyFormatter(balance)}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 

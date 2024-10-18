@@ -35,7 +35,7 @@ const ReceivedTable = () => {
           <Th>Ação</Th>
         </tr>
       </thead>
-      <tbody className="bg-green-600 text-white">
+      <tbody className="bg-green-600">
         {receivedValues.map((receivedValue: IMovimentation, index: number) => (
           <BodyRow
             key={receivedValue.id}
@@ -46,7 +46,7 @@ const ReceivedTable = () => {
           >
             <Td>{receivedValue.date.toString()}</Td>
             <Td>{moneyFormatter(Number(receivedValue.value))}</Td>
-            <td className="border border-white border-opacity-20 p-2">
+            <td className="border border-white border-opacity-50 p-2">
               {receivedValue.reason}
             </td>
             <Td>

@@ -15,7 +15,9 @@ const App = () => {
         style={{ minHeight: "calc(100svh - 70px)" }}
       >
         <section>
-          <Informations />
+          <article>
+            <Informations />
+          </article>
         </section>
         <section>
           <article>

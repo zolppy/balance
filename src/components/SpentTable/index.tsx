@@ -27,7 +27,7 @@ const SpentTable = () => {
 
   return (
     <table className="w-full">
-      <thead className="bg-red-700 text-white">
+      <thead className="bg-red-700">
         <tr>
           <Th>Data</Th>
           <Th>Valor</Th>
@@ -35,7 +35,7 @@ const SpentTable = () => {
           <Th>Ação</Th>
         </tr>
       </thead>
-      <tbody className="bg-red-600 text-white">
+      <tbody className="bg-red-600">
         {spentValues.map((spentValue: IMovimentation, index: number) => (
           <BodyRow
             key={spentValue.id}
@@ -46,7 +46,7 @@ const SpentTable = () => {
           >
             <Td>{spentValue.date.toString()}</Td>
             <Td>{moneyFormatter(Number(spentValue.value))}</Td>
-            <td className="border border-white border-opacity-20 p-2">
+            <td className="border border-white border-opacity-50 p-2">
               {spentValue.reason}
             </td>
             <Td>
