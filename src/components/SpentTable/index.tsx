@@ -26,38 +26,47 @@ const SpentTable = () => {
     (trRefs.current[index] = el);
 
   return (
-    <table className="w-full">
-      <thead className="bg-red-700">
-        <tr>
-          <Th>Data</Th>
-          <Th>Valor</Th>
-          <Th>Razão</Th>
-          <Th>Ação</Th>
-        </tr>
-      </thead>
-      <tbody className="bg-red-600">
-        {spentValues.map((spentValue: IMovimentation, index: number) => (
-          <BodyRow
-            key={spentValue.id}
-            id={spentValue.id}
-            index={index}
-            rowType={MovimentationType.Outcome}
-            setRef={setRef}
-          >
-            <Td>{spentValue.date.toString()}</Td>
-            <Td>{moneyFormatter(Number(spentValue.value))}</Td>
-            <td className="border border-white border-opacity-50 p-2">
-              {spentValue.reason}
-            </td>
-            <Td>
-              <TableButtonWrapper>
-                <RemoveButton index={index} handleClick={removeMovimentation} />
-              </TableButtonWrapper>
-            </Td>
-          </BodyRow>
-        ))}
-      </tbody>
-    </table>
+    <>
+      {spentValues.length ? (
+        <table className="w-full">
+          <thead className="bg-red-700">
+            <tr>
+              <Th>Data</Th>
+              <Th>Valor</Th>
+              <Th>Razão</Th>
+              <Th>Ação</Th>
+            </tr>
+          </thead>
+          <tbody className="bg-red-600">
+            {spentValues.map((spentValue: IMovimentation, index: number) => (
+              <BodyRow
+                key={spentValue.id}
+                id={spentValue.id}
+                index={index}
+                rowType={MovimentationType.Outcome}
+                setRef={setRef}
+              >
+                <Td>{spentValue.date.toString()}</Td>
+                <Td>{moneyFormatter(Number(spentValue.value))}</Td>
+                <td className="border border-white border-opacity-50 p-2">
+                  {spentValue.reason}
+                </td>
+                <Td>
+                  <TableButtonWrapper>
+                    <RemoveButton
+                      index={index}
+                      handleClick={removeMovimentation}
+                    />
+                  </TableButtonWrapper>
+                </Td>
+              </BodyRow>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <h2 className="text-red-600 font-bold">Sem dados para exibir</h2>
+      )}
+    </>
   );
 };
 
