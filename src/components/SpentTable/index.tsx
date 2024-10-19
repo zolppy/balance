@@ -64,7 +64,9 @@ const SpentTable = () => {
           </tbody>
         </table>
       ) : (
-        <h2 className="text-red-600 font-bold">Sem dados para exibir</h2>
+        <h2 className="text-red-600 font-bold text-xl">
+          Sem dados para exibir
+        </h2>
       )}
     </>
   );

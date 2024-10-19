@@ -16,7 +16,7 @@ const Footer = () => {
         </a>
       </p>
       <a href="https://github.com/zolppy/balance" target="_blank">
-        <BiLogoGithub className="text-4xl" />
+        <BiLogoGithub className="text-5xl" />
       </a>
     </footer>
   );

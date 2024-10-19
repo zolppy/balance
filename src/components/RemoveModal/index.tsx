@@ -18,7 +18,7 @@ const RemoveModal = () => {
           animate="visible"
           exit="hidden"
           transition={transition}
-          className="bg-black text-white border border-white min-w-[320px] w-[90%] max-w-[620px] mx-auto fixed rounded-lg p-3 flex flex-col gap-y-6"
+          className="bg-neutral-900 text-white border border-white border-opacity-50 min-w-[320px] w-[90%] max-w-[620px] mx-auto fixed rounded-lg p-3 flex flex-col gap-y-6"
         >
           <Header>
             <H1>Remoção de Movimentação</H1>
