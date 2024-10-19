@@ -15,7 +15,7 @@ const Select = ({ id, children, field, handleChange }: ISelect) => {
       required
       onChange={(event) => handleChange(field, event.target.value)}
       defaultValue={MovimentationType.Outcome}
-      className="bg-inherit border p-2 rounded-lg"
+      className="bg-inherit border p-2 rounded-lg bg-neutral-900"
     >
       {children}
     </select>
