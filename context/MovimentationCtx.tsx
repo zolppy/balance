@@ -47,8 +47,13 @@ const MovimentationProvider = ({ children }: { children: ReactNode }) => {
         },
       ];
 
-      setReceivedValues(updatedReceivedValues);
-      saveToStorage("receivedValues", updatedReceivedValues);
+      const orderedReceivedValues: IMovimentation[] =
+        updatedReceivedValues.sort(
+          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+        );
+
+      setReceivedValues(orderedReceivedValues);
+      saveToStorage("receivedValues", orderedReceivedValues);
     } else {
       const updatedSpentValues = [
         ...spentValues,
@@ -61,8 +66,12 @@ const MovimentationProvider = ({ children }: { children: ReactNode }) => {
         },
       ];
 
-      setSpentValues(updatedSpentValues);
-      saveToStorage("spentValues", updatedSpentValues);
+      const orderedSpentValues: IMovimentation[] = updatedSpentValues.sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      );
+
+      setSpentValues(orderedSpentValues);
+      saveToStorage("spentValues", orderedSpentValues);
     }
   };
 
