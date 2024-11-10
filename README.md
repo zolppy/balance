@@ -18,29 +18,45 @@
 
 <h2>Funcionalidades</h2>
 <ul>
-  <li>Adição de movimentação</li>
-  <li>Exibição de movimentações</li>
-  <li>Edição de movimentação</li>
-  <li>Remoção de movimentação</li>
-  <li>Persistência de dados via Local Storage</li>
-  <li>Cálculo e exibição de total recebido</li>
-  <li>Cálculo e exibição de total gasto</li>
-  <li>Cálculo e exibição de renda</li>
+  <li>Adição de movimentação;</li>
+  <li>Exibição de movimentações;</li>
+  <li>Edição de movimentação;</li>
+  <li>Remoção de movimentação;</li>
+  <li>Persistência de dados via Local Storage;</li>
+  <li>Cálculo e exibição de total recebido;</li>
+  <li>Cálculo e exibição de total gasto;</li>
+  <li>Cálculo e exibição de renda.</li>
 </ul>
 
 <h2>Como Contribuir</h2>
-<p>1. Clone o repositório na sua máquina</p>
-<pre><code>git clone git@github.com:zolppy/balance.git</code></pre>
-<p>2. Entre no diretório clonado deste projeto</p>
-<pre><code>cd balance</code></pre>
-<p>3. Faça suas alterações no projeto</p>
-<p>4. Adicione suas mudanças</p>
-<pre><code>git add .</code></pre>
-<p>5. Comente suas alterações</p>
-<pre><code>git commit -m "seu comentário"</code></pre>
-<p>6. Envie um <em>pull request</em></p>
-<pre><code>git push</code></pre>
-<p>7. Espere suas alterações serem aceitas</p>
+<ol>
+  <li>
+    <p>Clone o repositório na sua máquina;</p>
+    <pre><code>git clone git@github.com:zolppy/balance.git</code></pre>
+  </li>
+  <li>
+    <p>Entre no diretório clonado deste projeto;</p>
+    <pre><code>cd balance</code></pre>
+  </li>
+  <li>
+    <p>Faça suas alterações no projeto;</p>
+  </li>
+  <li>
+    <p>Adicione suas mudanças;</p>
+    <pre><code>git add .</code></pre>
+  </li>
+  <li>
+    <p>Comente suas alterações;</p>
+    <pre><code>git commit -m "seu comentário"</code></pre>
+  </li>
+  <li>
+    <p>Envie um <em>pull request;</em></p>
+    <pre><code>git push</code></pre>
+  </li>
+  <li>
+    <p>Espere suas alterações serem aceitas.</p>
+  </li>
+</ol>
 
 <h2>Contribuidores</h3>
 <a href="https://github.com/zolppy">
