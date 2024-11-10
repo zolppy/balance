@@ -28,6 +28,9 @@
   <li>Cálculo e exibição de renda.</li>
 </ul>
 
+<h2>Como Acessar a Aplicação</h2>
+<p>Acesse a aplicação por meio do link: <a href="https://balancebm.vercel.app" target="_blank">clique aqui</a></p>
+
 <h2><em>Screenshots</em></h2>
 <img src="https://github.com/user-attachments/assets/864d718b-ea7a-4d7d-b0b4-0965030ecbcf" />
 <img src="https://github.com/user-attachments/assets/cd0efec1-7e66-4333-a53b-5c5ec01de063" />
@@ -65,6 +68,6 @@
 </ol>
 
 <h2>Contribuidores</h3>
-<a href="https://github.com/zolppy">
+<a href="https://github.com/zolppy" target="_blank">
  <img loading="lazy" src="https://avatars.githubusercontent.com/u/94535032?v=4" width=100 />
 </a>
