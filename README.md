@@ -28,6 +28,12 @@
   <li>Cálculo e exibição de renda.</li>
 </ul>
 
+<h2><em>Screenshots</em></h2>
+<img src="https://github.com/user-attachments/assets/864d718b-ea7a-4d7d-b0b4-0965030ecbcf" />
+<img src="https://github.com/user-attachments/assets/cd0efec1-7e66-4333-a53b-5c5ec01de063" />
+<img src="https://github.com/user-attachments/assets/ae55762b-df22-4ad1-b268-a23cfd23f886" />
+<img src="https://github.com/user-attachments/assets/8c5d602e-9f67-4189-b91c-662c84d00177" />
+
 <h2>Como Contribuir</h2>
 <ol>
   <li>
