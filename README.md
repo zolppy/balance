@@ -15,3 +15,15 @@
   </ul>
   <p>Esta aplicação gerencia e mostra dados acerca de movimentações (entrada e saída de valores), bem como calcula e exibe dados acerca do total recebido, total gasto e renda, de acordo com movimentações realizadas.</p>
 </div>
+
+<h2>Funcionalidades</h2>
+<ul>
+  <li>Adição de movimentação</li>
+  <li>Exibição de movimentações</li>
+  <li>Edição de movimentação</li>
+  <li>Remoção de movimentação</li>
+  <li>Persistência de dados via Local Storage</li>
+  <li>Cálculo e exibição de total recebido</li>
+  <li>Cálculo e exibição de total gasto</li>
+  <li>Cálculo e exibição de renda</li>
+</ul>
