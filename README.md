@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/STATUS-DEVELOPMENT-green" />
     <img src="https://img.shields.io/badge/LICENSE-MIT-yellow" />
   </ul>
-  <p>Esta aplicação gerencia e mostra dados acerca de movimentações (entrada e saída de valores), bem como calcula e exibe dados acerca do total recebido, total gasto e renda, de acordo com movimentações realizadas.</p>
+  <p>Esta aplicação gerencia e mostra dados acerca de movimentações (entrada e saída de valores), bem como calcula e exibe dados acerca de total recebido, total gasto e renda.</p>
 </div>
 
 <h2>Funcionalidades</h2>
