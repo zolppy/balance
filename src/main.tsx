@@ -7,18 +7,21 @@ import { CurrentRemoveTargetProvider } from "../context/CurrentRemoveTargetCtx.t
 import { MovimentationProvider } from "../context/MovimentationCtx.tsx";
 import { OpenCloseAddModalProvider } from "../context/OpenCloseAddModalCtx.tsx";
 import { OpenCloseRemoveModalProvider } from "../context/OpenCloseRemoveModalCtx.tsx";
+import { OpenCloseEditModalProvider } from "../context/OpenCloseEditModalCtx.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <MovimentationProvider>
       <OpenCloseAddModalProvider>
-        <OpenCloseRemoveModalProvider>
-          <CurrentMovimentationProvider>
-            <CurrentRemoveTargetProvider>
-              <App />
-            </CurrentRemoveTargetProvider>
-          </CurrentMovimentationProvider>
-        </OpenCloseRemoveModalProvider>
+      	<OpenCloseEditModalProvider>
+		      <OpenCloseRemoveModalProvider>
+		        <CurrentMovimentationProvider>
+		          <CurrentRemoveTargetProvider>
+		            <App />
+		          </CurrentRemoveTargetProvider>
+		        </CurrentMovimentationProvider>
+		      </OpenCloseRemoveModalProvider>
+      	</OpenCloseEditModalProvider>
       </OpenCloseAddModalProvider>
     </MovimentationProvider>
   </StrictMode>

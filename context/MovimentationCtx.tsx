@@ -12,6 +12,7 @@ interface IMovimentationCtx {
   spentValues: IMovimentation[];
   addMovimentation: (movimentation: IMovimentation) => void;
   removeMovimentation: (id: string) => void;
+  editMovimentation: (id: string, mov: IMovimentation) => void;
 }
 
 const Movimentation = createContext<IMovimentationCtx | undefined>(undefined);
@@ -100,6 +101,36 @@ const MovimentationProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const editMovimentation = (id: string, mov: IMovimentation) => {
+    const { date, reason, value } = mov;
+
+    const formatDate = (dateStr: string) => {
+      const [day, month, year] = dateStr.split("-");
+      return `${year}/${month}/${day}`;
+    };
+
+    const treatedDate = formatDate(date as string);
+
+    const updatedReceivedValues = receivedValues.map((receivedValue) =>
+      receivedValue.id === id
+        ? { ...receivedValue, date: treatedDate, reason, value }
+        : receivedValue
+    );
+
+    const updatedSpentValues = spentValues.map((spentValue) =>
+      spentValue.id === id
+        ? { ...spentValue, date: treatedDate, reason, value }
+        : spentValue
+    );
+
+    // Atualiza o estado e salva no storage
+    setReceivedValues(updatedReceivedValues);
+    setSpentValues(updatedSpentValues);
+
+    saveToStorage("receivedValues", updatedReceivedValues);
+    saveToStorage("spentValues", updatedSpentValues);
+  };
+
   return (
     <Movimentation.Provider
       value={{
@@ -107,6 +138,7 @@ const MovimentationProvider = ({ children }: { children: ReactNode }) => {
         spentValues,
         addMovimentation,
         removeMovimentation,
+        editMovimentation,
       }}
     >
       {children}

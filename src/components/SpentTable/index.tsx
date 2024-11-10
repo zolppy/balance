@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import BodyRow from "../Table/BodyRow";
 import RemoveButton from "../RemoveButton";
+import EditButton from "../EditButton";
 import TableButtonWrapper from "../Table/TableButtonWrapper";
 import Td from "../Table/Td";
 import Th from "../Table/Th";
@@ -10,16 +11,35 @@ import { MovimentationType } from "../../../utils/enums/movimentationType";
 import { useCurrentRemoveTarget } from "../../../context/CurrentRemoveTargetCtx";
 import { useMovimentation } from "../../../context/MovimentationCtx";
 import { useOpenCloseRemoveModal } from "../../../context/OpenCloseRemoveModalCtx";
+import { useOpenCloseEditModal } from "../../../context/OpenCloseEditModalCtx";
+import { useCurrentMovimentation } from "../../../context/CurrentMovimentationCtx";
 
 const SpentTable = () => {
   const { openRemoveModal } = useOpenCloseRemoveModal();
+  const { openEditModal } = useOpenCloseEditModal();
   const { setRemoveTargetID } = useCurrentRemoveTarget();
+  const { setCurrentMovimentation } = useCurrentMovimentation();
   const { spentValues } = useMovimentation();
   const trRefs = useRef<(HTMLTableRowElement | null)[]>([]);
 
   const removeMovimentation = (index: number) => {
     setRemoveTargetID(trRefs.current[index]?.id as string);
     openRemoveModal();
+  };
+
+  const editMovimentation = (index: number) => {
+    openEditModal();
+
+    const treatedDate = String(spentValues[index].date).split("/");
+    const newDate = `${treatedDate[2]}-${treatedDate[1]}-${treatedDate[0]}`;
+
+    setCurrentMovimentation({
+      id: spentValues[index].id,
+      date: newDate,
+      value: spentValues[index].value,
+      reason: spentValues[index].reason,
+      type: spentValues[index].type,
+    });
   };
 
   const setRef = (el: HTMLTableRowElement | null, index: number) =>
@@ -57,6 +77,7 @@ const SpentTable = () => {
                       index={index}
                       handleClick={removeMovimentation}
                     />
+                    <EditButton index={index} handleClick={editMovimentation} />
                   </TableButtonWrapper>
                 </Td>
               </BodyRow>

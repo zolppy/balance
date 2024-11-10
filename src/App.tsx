@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Informations from "./components/Informations";
 import ReceivedTable from "./components/ReceivedTable";
 import RemoveModal from "./components/RemoveModal";
+import EditModal from "./components/EditModal";
 import SpentTable from "./components/SpentTable";
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
         </section>
         <AddModal />
         <RemoveModal />
+        <EditModal />
       </main>
       <Footer />
     </>
