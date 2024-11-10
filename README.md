@@ -27,3 +27,8 @@
   <li>Cálculo e exibição de total gasto</li>
   <li>Cálculo e exibição de renda</li>
 </ul>
+
+<h2>Contribuidores</h3>
+<a href="https://github.com/zolppy">
+ <img loading="lazy" src="https://avatars.githubusercontent.com/u/94535032?v=4" width=100 />
+</a>
