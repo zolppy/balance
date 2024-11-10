@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Gerenciador de Gastos</h1>
+  <h1>Gerenciador de Despesas</h1>
   <ul>
     <img src="https://img.shields.io/badge/REACT-18.3.1-purple" />
     <img src="https://img.shields.io/badge/REACT ICONS-5.3.0-blue" />
